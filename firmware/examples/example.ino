@@ -56,8 +56,7 @@ sun_time.json:
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 //Program Start
-
-#include "DailyTimerSpark.h"
+#include "DailyTimerSpark/DailyTimerSpark.h"
 #define SUN_UPDATE_INTERVAL 30*60*1000UL
 
 const char* cityLocation = "Princeton";  //City for my Photon
