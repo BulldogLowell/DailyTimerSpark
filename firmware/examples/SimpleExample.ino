@@ -34,7 +34,7 @@ April, 2016
 
 //Program Start
 
-#include "DailyTimerSpark.h"
+#include "DailyTimerSpark/DailyTimerSpark.h"
 
 
 DailyTimer timer1(18, 30,  1, 30, EVERY_DAY, RANDOM_END, customSeedGenerator);      // optional callback function for random number generation, see below example
