@@ -8,8 +8,7 @@ DailyTimer::DailyTimer(byte StartHour, byte StartMinute, byte endHour, byte endM
   _startTime.minute = constrain(StartMinute, 0, 59);
   _endTime.hour = constrain(endHour, 0, 23);
   _endTime.minute = constrain(endMinute, 0, 59);
-  _onMask = dayTemplate[DayOfWeek];
-  setDaysActive(_onMask);
+  this->setDaysActive(dayTemplate[DayOfWeek]);
   _randomType = FIXED;
   _offset = 15;
   _randomCallback = NULL;
@@ -21,7 +20,7 @@ DailyTimer::DailyTimer(byte StartHour, byte StartMinute, byte endHour, byte endM
   _startTime.minute = constrain(StartMinute, 0, 59);
   _endTime.hour = constrain(endHour, 0, 23);
   _endTime.minute = constrain(endMinute, 0, 59);
-  _onMask = dayTemplate[DayOfWeek];
+  this->setDaysActive(dayTemplate[DayOfWeek]);
   _randomType = randomTime;
   _offset = 15;
   _randomCallback = NULL;
@@ -33,7 +32,7 @@ DailyTimer::DailyTimer(byte StartHour, byte StartMinute, byte endHour, byte endM
   _startTime.minute = constrain(StartMinute, 0, 59);
   _endTime.hour = constrain(endHour, 0, 23);
   _endTime.minute = constrain(endMinute, 0, 59);
-  _onMask = dayTemplate[DayOfWeek];
+  this->setDaysActive(dayTemplate[DayOfWeek]);
   _randomType = randomTime;
   _offset = 15;
   _randomCallback = randomCallback;
