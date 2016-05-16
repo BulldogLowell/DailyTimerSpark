@@ -3,6 +3,6 @@
   "name": "DailyTimerSpark",
   "author": "Jim Brower <bulldoglowell@gmail.com>",
   "license": "MIT",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Library that allow you to create daily timers"
 }
