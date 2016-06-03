@@ -103,6 +103,17 @@ void DailyTimer::setEndTime(byte hour, byte minute)
 
 byte DailyTimer::setRandomDays(byte number_Days)
 {
+  if(number_days >=7)
+  {
+    _onMask = 0b11111110;
+    return _onMask;
+  }
+  else if(number_days = 0)
+  {
+    _onMask = 0x0;
+    return _onMask;
+  }
+  }
   if (_randomCallback)
   {
     randomSeed(_randomCallback());
