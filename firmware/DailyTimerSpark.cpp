@@ -46,12 +46,26 @@ bool DailyTimer::begin()
 void DailyTimer::setDaysActive(EventDays days)
 {
   _onMask = dayTemplate[days];
-  _offMask = _onMask >> 1;
+  if(tmConvert_t(Time.year(), Time.month(), Time.day(), _startTime.hour, _startTime.minute, 0) > tmConvert_t(Time.year(), Time.month(), Time.day(), _endTime.hour, _endTime.minute, 0))
+  {
+    _offMask = _onMask >> 1;
+  }
+  else
+  {
+    _offMask = _onMask;
+  }
 }
 void DailyTimer::setDaysActive(byte activeDays)
 {
   _onMask = activeDays;
-  _offMask = _onMask >> 1;
+  if(tmConvert_t(Time.year(), Time.month(), Time.day(), _startTime.hour, _startTime.minute, 0) > tmConvert_t(Time.year(), Time.month(), Time.day(), _endTime.hour, _endTime.minute, 0))
+  {
+    _offMask = _onMask >> 1;
+  }
+  else
+  {
+    _offMask = _onMask;
+  }
 }
 
 bool DailyTimer::startTrigger()
@@ -93,26 +107,27 @@ void DailyTimer::setStartTime(byte hour, byte minute)
 {
   _startTime.hour = constrain(hour, 0, 23);
   _startTime.minute = constrain(minute, 0, 59);
+  this->setDaysActive(this->getDays());
 }
 
 void DailyTimer::setEndTime(byte hour, byte minute)
 {
   _endTime.hour = constrain(hour, 0, 23);
   _endTime.minute = constrain(minute, 0, 59);
+  this->setDaysActive(this->getDays());
 }
 
 byte DailyTimer::setRandomDays(byte number_Days)
 {
-  if(number_days >=7)
+  if(number_Days >= 7)
   {
     _onMask = 0b11111110;
     return _onMask;
   }
-  else if(number_days = 0)
+  else if(number_Days = 0)
   {
     _onMask = 0x0;
     return _onMask;
-  }
   }
   if (_randomCallback)
   {
@@ -158,7 +173,7 @@ bool DailyTimer::isActive()
     }
     else
     {
-      randomSeed(analogRead(A0));
+      randomSeed(analogRead(A0) + micros());
     }
     if (_randomType == RANDOM  || _randomType == RANDOM_START)
     {
